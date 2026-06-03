@@ -1,0 +1,23 @@
+{
+  "name": "md-forge",
+  "version": "1.0.0",
+  "description": "Premium Markdown converter — MD to HTML, PDF, DOCX",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port 4200",
+    "build": "vite build",
+    "preview": "vite preview --port 4200"
+  },
+  "dependencies": {
+    "file-saver": "^2.0.5",
+    "highlight.js": "^11.11.1",
+    "html-docx-js-typescript": "^0.1.5",
+    "html2pdf.js": "^0.10.2",
+    "jszip": "^3.10.1",
+    "marked": "^15.0.7",
+    "mermaid": "^11.4.1"
+  },
+  "devDependencies": {
+    "vite": "^6.3.5"
+  }
+}

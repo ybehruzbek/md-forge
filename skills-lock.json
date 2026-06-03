@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "skills": {
+    "css-design-tdd": {
+      "source": "xiaolai/vmark",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/css-design-tdd/SKILL.md",
+      "computedHash": "99eb332e6320b746fcef4cb65bfe2ddc7ed4d28315ff8dcf0d16e71ca5315794"
+    },
+    "ui-design-system": {
+      "source": "samhvw8/dot-claude",
+      "sourceType": "github",
+      "skillPath": "skills/ui-design-system/SKILL.md",
+      "computedHash": "e3618600c5afe99fd04a7d3c36a54c27badbf762b4f6093684ccf86bff87ef84"
+    },
+    "vite-expert": {
+      "source": "duck4nh/antigravity-kit",
+      "sourceType": "github",
+      "skillPath": "templates/.agent/skills/vite-expert/SKILL.md",
+      "computedHash": "93216674a93e77b2b34dbf17e4bcfcb454a6105d86fd1a49ac696b0e93d7757a"
+    }
+  }
+}

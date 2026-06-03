@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="uz" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MD Forge — Markdown fayllarni HTML, PDF, DOCX formatga konvertatsiya qiling. Premium Apple-style dizayn.">
+  <meta name="keywords" content="markdown, converter, html, pdf, docx, md forge">
+  <title>MD Forge — Markdown Converter</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav id="navbar" class="navbar">
+    <div class="navbar-inner">
+      <div class="navbar-left">
+        <div class="logo">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <rect width="28" height="28" rx="6" fill="url(#logo-grad)"/>
+            <path d="M7 9h2l3 5 3-5h2v10h-2v-6.5L12.5 17h-1L9 12.5V19H7V9z" fill="white"/>
+            <defs><linearGradient id="logo-grad" x1="0" y1="0" x2="28" y2="28"><stop stop-color="#007AFF"/><stop offset="1" stop-color="#5856D6"/></linearGradient></defs>
+          </svg>
+          <span class="logo-text">MD Forge</span>
+        </div>
+      </div>
+
+      <div class="navbar-center">
+        <div id="format-picker" class="segmented-control">
+          <button class="seg-btn active" data-format="html">HTML</button>
+          <button class="seg-btn" data-format="pdf">PDF</button>
+          <button class="seg-btn" data-format="docx">DOCX</button>
+          <div class="seg-indicator"></div>
+        </div>
+      </div>
+
+      <div class="navbar-right">
+        <div id="theme-picker" class="theme-dropdown">
+          <button id="theme-btn" class="icon-btn" title="Eksport temasi">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          </button>
+          <div id="theme-menu" class="theme-menu hidden">
+            <button class="theme-option active" data-export-theme="clean">Clean White</button>
+            <button class="theme-option" data-export-theme="dark">Dark Elegant</button>
+            <button class="theme-option" data-export-theme="academic">Academic</button>
+            <button class="theme-option" data-export-theme="minimal">Minimal</button>
+          </div>
+        </div>
+
+        <button id="darkmode-toggle" class="icon-btn" title="Dark / Light mode">
+          <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+
+        <button id="settings-toggle" class="icon-btn" title="Eksport sozlamalari">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        </button>
+
+        <button id="export-btn" class="btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span>Export</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main id="app-main" class="app-main">
+    
+    <!-- Dropzone (initial state) -->
+    <section id="dropzone-section" class="dropzone-section">
+      <div id="dropzone" class="dropzone">
+        <div class="dropzone-content">
+          <div class="dropzone-icon">
+            <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="12" y1="18" x2="12" y2="12"/>
+              <line x1="9" y1="15" x2="12" y2="12"/>
+              <line x1="15" y1="15" x2="12" y2="12"/>
+            </svg>
+          </div>
+          <h2 class="dropzone-title">Markdown faylni tashlang</h2>
+          <p class="dropzone-desc">yoki <button id="browse-btn" class="link-btn">faylni tanlang</button></p>
+          <p class="dropzone-hint">.md fayllar qabul qilinadi · Bir nechta fayl tashlash mumkin</p>
+          <input type="file" id="file-input" accept=".md,.markdown,.txt" multiple hidden>
+        </div>
+      </div>
+      <div class="dropzone-or">
+        <span>yoki</span>
+      </div>
+      <button id="write-btn" class="btn-secondary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        Qo'lda yozish
+      </button>
+    </section>
+
+    <!-- Editor Section (hidden initially) -->
+    <section id="editor-section" class="editor-section hidden">
+      <!-- Sidebar for bulk files -->
+      <aside id="sidebar" class="sidebar hidden">
+        <div class="sidebar-header">
+          <h3>Fayllar</h3>
+          <span id="file-count" class="badge">0</span>
+        </div>
+        <div id="file-list" class="file-list"></div>
+        <div class="sidebar-actions">
+          <button id="add-more-btn" class="btn-ghost btn-sm">+ Qo'shish</button>
+          <button id="bulk-export-btn" class="btn-primary btn-sm">Barchasini eksport</button>
+        </div>
+      </aside>
+
+      <!-- Split View -->
+      <div class="split-view">
+        <div class="editor-pane">
+          <div class="pane-header">
+            <span class="pane-title">Markdown</span>
+            <span id="char-count" class="pane-meta">0 belgi</span>
+          </div>
+          <textarea id="md-editor" class="md-editor" placeholder="# Sarlavha&#10;&#10;Markdown matn yozing..." spellcheck="false"></textarea>
+        </div>
+
+        <div id="divider" class="divider">
+          <div class="divider-handle"></div>
+        </div>
+
+        <div class="preview-pane">
+          <div class="pane-header">
+            <span class="pane-title">Preview</span>
+            <div class="pane-actions">
+              <button id="zoom-out" class="icon-btn-sm" title="Kichiklashtirish">−</button>
+              <span id="zoom-level" class="zoom-level">100%</span>
+              <button id="zoom-in" class="icon-btn-sm" title="Kattalashtirish">+</button>
+            </div>
+          </div>
+          <div id="preview" class="preview-content"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Export Settings Panel -->
+  <div id="export-settings" class="export-settings hidden">
+    <button id="settings-close" class="settings-close-btn" title="Yopish">×</button>
+
+    <div class="export-settings-group">
+      <span class="export-settings-label">Sahifa</span>
+      <select id="page-size">
+        <option value="a4" selected>A4</option>
+        <option value="letter">Letter</option>
+        <option value="legal">Legal</option>
+        <option value="a3">A3</option>
+      </select>
+    </div>
+
+    <div class="export-settings-group">
+      <span class="export-settings-label">Yo'nalish</span>
+      <select id="page-orientation">
+        <option value="portrait" selected>Portrait</option>
+        <option value="landscape">Landscape</option>
+      </select>
+    </div>
+
+    <div class="export-settings-group">
+      <span class="export-settings-label">Chegaralar (mm)</span>
+      <div class="margin-inputs">
+        <input type="number" id="margin-top" value="15" min="0" max="50" title="Yuqori">
+        <span>↕</span>
+        <input type="number" id="margin-right" value="15" min="0" max="50" title="O'ng">
+        <span>↔</span>
+        <input type="number" id="margin-bottom" value="15" min="0" max="50" title="Pastki">
+        <span>↕</span>
+        <input type="number" id="margin-left" value="15" min="0" max="50" title="Chap">
+      </div>
+    </div>
+
+    <div class="export-settings-group">
+      <span class="export-settings-label">Ramka</span>
+      <select id="page-border">
+        <option value="none" selected>Yo'q</option>
+        <option value="thin">Ingichka</option>
+        <option value="thick">Qalin</option>
+        <option value="double">Ikki chiziq</option>
+        <option value="decorative">Bezak</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Toast container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Bulk export progress modal -->
+  <div id="progress-modal" class="modal-overlay hidden">
+    <div class="modal-sheet">
+      <h3>Eksport jarayoni</h3>
+      <div class="progress-bar-wrap">
+        <div id="progress-bar" class="progress-bar"></div>
+      </div>
+      <p id="progress-text" class="progress-text">0 / 0 tayyor</p>
+      <button id="progress-cancel" class="btn-ghost">Bekor qilish</button>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

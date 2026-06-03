@@ -1,0 +1,6 @@
+node_modules/
+dist/
+.agent/
+.agents/
+.DS_Store
+.env

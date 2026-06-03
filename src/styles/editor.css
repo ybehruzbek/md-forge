@@ -1,0 +1,584 @@
+/* ============================================
+   MD Forge — Editor & Preview Layout
+   Apple Split View style
+   ============================================ */
+
+/* ===== APP MAIN ===== */
+.app-main {
+  margin-top: calc(var(--navbar-height) + 24px);
+  height: calc(100vh - var(--navbar-height) - 24px);
+  display: flex;
+  flex-direction: column;
+  transition: all var(--duration-normal) var(--ease-apple);
+}
+
+body.editor-active .app-main {
+  margin-top: var(--navbar-height);
+  height: calc(100vh - var(--navbar-height));
+}
+
+/* ===== EDITOR SECTION ===== */
+.editor-section {
+  display: flex;
+  height: 100%;
+  overflow: hidden;
+  animation: fadeIn var(--duration-normal) var(--ease-apple);
+}
+
+/* ===== SPLIT VIEW ===== */
+.split-view {
+  flex: 1;
+  display: flex;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Pane shared */
+.editor-pane,
+.preview-pane {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-width: 280px;
+  overflow: hidden;
+}
+
+.editor-pane {
+  flex: 1;
+  border-right: none;
+  background: var(--bg-primary);
+  transition: background var(--duration-slow) var(--ease-apple);
+}
+
+.preview-pane {
+  flex: 1;
+  background: var(--bg-secondary);
+  transition: background var(--duration-slow) var(--ease-apple);
+}
+
+/* Pane header */
+.pane-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px var(--space-md);
+  border-bottom: 1px solid var(--divider);
+  flex-shrink: 0;
+  height: 36px;
+}
+
+.pane-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.pane-meta {
+  font-size: 11px;
+  color: var(--text-tertiary);
+}
+
+.pane-actions {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+/* ===== EDITOR TEXTAREA ===== */
+.md-editor {
+  flex: 1;
+  width: 100%;
+  padding: var(--space-lg);
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-primary);
+  background: transparent;
+  border: none;
+  outline: none;
+  resize: none;
+  overflow-y: auto;
+  tab-size: 2;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.md-editor::placeholder {
+  color: var(--text-tertiary);
+}
+
+.md-editor:focus {
+  outline: none;
+}
+
+/* ===== DIVIDER ===== */
+.divider {
+  width: 1px;
+  height: 100%;
+  background: var(--border);
+  cursor: col-resize;
+  position: relative;
+  flex-shrink: 0;
+  z-index: 10;
+  transition: background var(--duration-fast) var(--ease-apple);
+}
+
+.divider:hover,
+.divider.active {
+  background: var(--accent);
+}
+
+.divider-handle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 4px;
+  height: 32px;
+  background: var(--text-tertiary);
+  border-radius: var(--radius-full);
+  opacity: 0;
+  transition: opacity var(--duration-fast) var(--ease-apple);
+}
+
+.divider:hover .divider-handle,
+.divider.active .divider-handle {
+  opacity: 0.5;
+  background: var(--accent);
+}
+
+/* Make divider easier to grab */
+.divider::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -4px;
+  width: 9px;
+  cursor: col-resize;
+}
+
+/* ===== PREVIEW CONTENT ===== */
+.preview-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-xl) var(--space-2xl);
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-primary);
+  background: var(--bg-secondary);
+  transition: font-size var(--duration-fast) var(--ease-apple),
+              background var(--duration-slow) var(--ease-apple),
+              color var(--duration-slow) var(--ease-apple);
+}
+
+/* Preview typography */
+.preview-content h1 {
+  font-size: 2em;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin: 1.2em 0 0.6em;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.preview-content h1:first-child {
+  margin-top: 0;
+}
+
+.preview-content h2 {
+  font-size: 1.5em;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+  margin: 1.2em 0 0.5em;
+  color: var(--text-primary);
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid var(--divider);
+}
+
+.preview-content h3 {
+  font-size: 1.25em;
+  font-weight: 600;
+  margin: 1em 0 0.5em;
+  color: var(--text-primary);
+}
+
+.preview-content h4, .preview-content h5, .preview-content h6 {
+  font-weight: 600;
+  margin: 1em 0 0.4em;
+  color: var(--text-secondary);
+}
+
+.preview-content p {
+  margin: 0.6em 0;
+}
+
+.preview-content a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.preview-content a:hover {
+  text-decoration: underline;
+}
+
+.preview-content strong {
+  font-weight: 600;
+}
+
+.preview-content img {
+  max-width: 100%;
+  border-radius: var(--radius-md);
+  margin: 1em 0;
+}
+
+/* Lists */
+.preview-content ul,
+.preview-content ol {
+  padding-left: 1.5em;
+  margin: 0.6em 0;
+}
+
+.preview-content li {
+  margin: 0.25em 0;
+}
+
+.preview-content li > ul,
+.preview-content li > ol {
+  margin: 0.2em 0;
+}
+
+/* Task list */
+.preview-content input[type="checkbox"] {
+  margin-right: 6px;
+  accent-color: var(--accent);
+}
+
+/* Blockquote */
+.preview-content blockquote {
+  border-left: 3px solid var(--accent);
+  padding: var(--space-sm) var(--space-md);
+  margin: 1em 0;
+  background: var(--accent-light);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  color: var(--text-secondary);
+}
+
+.preview-content blockquote p {
+  margin: 0.3em 0;
+}
+
+/* Code inline */
+.preview-content code {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  padding: 2px 6px;
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-xs);
+  color: var(--text-primary);
+}
+
+/* Code block */
+.preview-content pre {
+  margin: 1em 0;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  position: relative;
+}
+
+.preview-content pre code {
+  display: block;
+  padding: var(--space-md) var(--space-lg);
+  background: #1a1a2e;
+  color: #e4e4e7;
+  font-size: 13px;
+  line-height: 1.6;
+  overflow-x: auto;
+  border-radius: var(--radius-md);
+}
+
+[data-theme="light"] .preview-content pre code {
+  background: #f8f8fa;
+  color: #1d1d1f;
+  border: 1px solid var(--border);
+}
+
+/* Code copy button */
+.code-block-wrapper {
+  position: relative;
+}
+
+.code-copy-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 500;
+  font-family: var(--font-sans);
+  background: rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.7);
+  border: none;
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  opacity: 0;
+  transition: all var(--duration-fast) var(--ease-apple);
+  z-index: 2;
+}
+
+[data-theme="light"] .code-copy-btn {
+  background: var(--bg-glass);
+  color: var(--text-secondary);
+}
+
+.code-block-wrapper:hover .code-copy-btn {
+  opacity: 1;
+}
+
+.code-copy-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+[data-theme="light"] .code-copy-btn:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+/* Tables */
+.preview-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0;
+  font-size: 14px;
+}
+
+.preview-content th {
+  text-align: left;
+  font-weight: 600;
+  padding: 10px 12px;
+  background: var(--bg-tertiary);
+  border-bottom: 2px solid var(--border-strong);
+  color: var(--text-primary);
+}
+
+.preview-content td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--divider);
+  color: var(--text-primary);
+}
+
+.preview-content tr:last-child td {
+  border-bottom: none;
+}
+
+.preview-content tr:hover td {
+  background: var(--bg-hover);
+}
+
+/* Horizontal rule */
+.preview-content hr {
+  border: none;
+  height: 1px;
+  background: var(--divider);
+  margin: 2em 0;
+}
+
+/* ===== GITHUB ALERTS ===== */
+.alert-block {
+  padding: var(--space-md);
+  margin: 1em 0;
+  border-radius: var(--radius-md);
+  border-left: 4px solid;
+  font-size: 14px;
+}
+
+.alert-block .alert-title {
+  font-weight: 600;
+  font-size: 13px;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.alert-note { background: var(--accent-light); border-color: var(--accent); }
+.alert-note .alert-title { color: var(--accent); }
+
+.alert-tip { background: var(--success-light); border-color: var(--success); }
+.alert-tip .alert-title { color: var(--success); }
+
+.alert-important { background: rgba(175, 82, 222, 0.1); border-color: #af52de; }
+.alert-important .alert-title { color: #af52de; }
+
+.alert-warning { background: var(--warning-light); border-color: var(--warning); }
+.alert-warning .alert-title { color: var(--warning); }
+
+.alert-caution { background: var(--error-light); border-color: var(--error); }
+.alert-caution .alert-title { color: var(--error); }
+
+/* ===== MERMAID ===== */
+.mermaid-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 1em 0;
+  padding: var(--space-md);
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-md);
+  overflow-x: auto;
+}
+
+/* ===== EXPORT SETTINGS PANEL ===== */
+.export-settings {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 400;
+  background: var(--bg-glass-thick);
+  backdrop-filter: var(--blur);
+  -webkit-backdrop-filter: var(--blur);
+  border-top: 1px solid var(--border);
+  padding: var(--space-md) var(--space-xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xl);
+  animation: slideUp var(--duration-normal) var(--ease-apple);
+  flex-wrap: wrap;
+}
+
+.export-settings-group {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.export-settings-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.export-settings select,
+.export-settings input[type="number"] {
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: var(--font-sans);
+  color: var(--text-primary);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  transition: all var(--duration-fast) var(--ease-apple);
+  min-width: 60px;
+}
+
+.export-settings select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236e6e73' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  background-size: 14px;
+  padding-right: 28px;
+  cursor: pointer;
+}
+
+[data-theme="dark"] .export-settings select {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2398989d' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+}
+
+.export-settings select:hover,
+.export-settings input[type="number"]:hover {
+  border-color: var(--border-strong);
+  background: var(--bg-hover);
+}
+
+.export-settings select:focus,
+.export-settings input[type="number"]:focus {
+  border-color: var(--accent);
+  background: var(--bg-primary);
+  box-shadow: 0 0 0 3px var(--accent-light);
+  outline: none;
+}
+
+.export-settings input[type="number"] {
+  width: 56px;
+  text-align: center;
+}
+
+.margin-inputs {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.margin-inputs span {
+  font-size: 11px;
+  color: var(--text-tertiary);
+}
+
+.settings-close-btn {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  border-radius: var(--radius-xs);
+  font-size: 16px;
+  transition: all var(--duration-fast) var(--ease-apple);
+}
+
+.settings-close-btn:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .split-view {
+    flex-direction: column;
+  }
+
+  .editor-pane,
+  .preview-pane {
+    min-width: 100%;
+    min-height: 40vh;
+  }
+
+  .divider {
+    width: 100%;
+    height: 1px;
+    cursor: row-resize;
+  }
+
+  .divider-handle {
+    width: 32px;
+    height: 4px;
+  }
+
+  .divider::before {
+    top: -4px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 9px;
+  }
+
+  .preview-content {
+    padding: var(--space-md);
+  }
+}
