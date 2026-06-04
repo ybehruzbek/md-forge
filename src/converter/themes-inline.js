@@ -20,6 +20,7 @@ const baseCSS = `
 .export-themed a:hover { text-decoration: underline; }
 .export-themed strong { font-weight: 600; }
 .export-themed img { max-width: 100%; border-radius: 8px; margin: 1em 0; }
+.export-themed img.apple-emoji { width: 1.15em; height: 1.15em; margin: 0 0.05em 0 0.1em; vertical-align: -0.2em; display: inline-block; border-radius: 0; box-shadow: none; border: none; }
 .export-themed ul, .export-themed ol { padding-left: 1.5em; margin: 0.6em 0; }
 .export-themed li { margin: 0.25em 0; }
 .export-themed table { width: 100%; border-collapse: collapse; margin: 1em 0; font-size: 14px; }

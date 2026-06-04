@@ -58,6 +58,15 @@
   flex: 1;
 }
 
+/* Apple Emoji Styles */
+.apple-emoji {
+  width: 1.15em;
+  height: 1.15em;
+  margin: 0 0.05em 0 0.1em;
+  vertical-align: -0.2em;
+  display: inline-block;
+}
+
 /* Logo */
 .logo {
   display: flex;
