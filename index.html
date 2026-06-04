@@ -143,45 +143,69 @@
     <button id="settings-close" class="settings-close-btn" title="Yopish">×</button>
 
     <div class="export-settings-group">
-      <span class="export-settings-label">Sahifa</span>
-      <select id="page-size">
-        <option value="a4" selected>A4</option>
-        <option value="letter">Letter</option>
-        <option value="legal">Legal</option>
-        <option value="a3">A3</option>
-      </select>
-    </div>
-
-    <div class="export-settings-group">
-      <span class="export-settings-label">Yo'nalish</span>
-      <select id="page-orientation">
-        <option value="portrait" selected>Portrait</option>
-        <option value="landscape">Landscape</option>
-      </select>
-    </div>
-
-    <div class="export-settings-group">
-      <span class="export-settings-label">Chegaralar (mm)</span>
-      <div class="margin-inputs">
-        <input type="number" id="margin-top" value="15" min="0" max="50" title="Yuqori">
-        <span>↕</span>
-        <input type="number" id="margin-right" value="15" min="0" max="50" title="O'ng">
-        <span>↔</span>
-        <input type="number" id="margin-bottom" value="15" min="0" max="50" title="Pastki">
-        <span>↕</span>
-        <input type="number" id="margin-left" value="15" min="0" max="50" title="Chap">
+      <span class="export-settings-label">Sahifa formati</span>
+      <div class="custom-segmented" id="page-size">
+        <button class="custom-seg-btn active" data-val="a4">A4</button>
+        <button class="custom-seg-btn" data-val="letter">Letter</button>
+        <button class="custom-seg-btn" data-val="legal">Legal</button>
+        <button class="custom-seg-btn" data-val="a3">A3</button>
       </div>
     </div>
 
     <div class="export-settings-group">
-      <span class="export-settings-label">Ramka</span>
-      <select id="page-border">
-        <option value="none" selected>Yo'q</option>
-        <option value="thin">Ingichka</option>
-        <option value="thick">Qalin</option>
-        <option value="double">Ikki chiziq</option>
-        <option value="decorative">Bezak</option>
-      </select>
+      <span class="export-settings-label">Yo'nalish</span>
+      <div class="custom-segmented" id="page-orientation">
+        <button class="custom-seg-btn active" data-val="portrait">Bo'yiga</button>
+        <button class="custom-seg-btn" data-val="landscape">Eniga</button>
+      </div>
+    </div>
+
+    <div class="export-settings-group">
+      <span class="export-settings-label">Chegaralar (mm)</span>
+      <div class="custom-margins-grid">
+        <div class="margin-input-wrap">
+          <span class="margin-icon" title="Yuqori">↑</span>
+          <input type="number" id="margin-top" value="15" min="0" max="50">
+        </div>
+        <div class="margin-input-wrap">
+          <span class="margin-icon" title="Pastki">↓</span>
+          <input type="number" id="margin-bottom" value="15" min="0" max="50">
+        </div>
+        <div class="margin-input-wrap">
+          <span class="margin-icon" title="Chap">←</span>
+          <input type="number" id="margin-left" value="15" min="0" max="50">
+        </div>
+        <div class="margin-input-wrap">
+          <span class="margin-icon" title="O'ng">→</span>
+          <input type="number" id="margin-right" value="15" min="0" max="50">
+        </div>
+      </div>
+    </div>
+
+    <div class="export-settings-group">
+      <span class="export-settings-label">Ramka stili</span>
+      <div class="custom-border-grid" id="page-border">
+        <button class="border-card active" data-val="none">
+          <div class="border-preview none"></div>
+          <span>Yo'q</span>
+        </button>
+        <button class="border-card" data-val="thin">
+          <div class="border-preview thin"></div>
+          <span>Ingichka</span>
+        </button>
+        <button class="border-card" data-val="thick">
+          <div class="border-preview thick"></div>
+          <span>Qalin</span>
+        </button>
+        <button class="border-card" data-val="double">
+          <div class="border-preview double"></div>
+          <span>Ikki qavat</span>
+        </button>
+        <button class="border-card" data-val="decorative">
+          <div class="border-preview decorative"></div>
+          <span>Dekorativ</span>
+        </button>
+      </div>
     </div>
   </div>
 

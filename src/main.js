@@ -311,16 +311,31 @@ function bindSettings() {
     els.settingsPanel.classList.add('hidden');
   });
 
-  els.pageSize.addEventListener('change', (e) => {
-    state.pageSize = e.target.value;
+  // Page Size Custom Segmented Control
+  els.pageSize.querySelectorAll('.custom-seg-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      els.pageSize.querySelectorAll('.custom-seg-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      state.pageSize = btn.dataset.val;
+    });
   });
 
-  els.pageOrientation.addEventListener('change', (e) => {
-    state.pageOrientation = e.target.value;
+  // Page Orientation Custom Segmented Control
+  els.pageOrientation.querySelectorAll('.custom-seg-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      els.pageOrientation.querySelectorAll('.custom-seg-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      state.pageOrientation = btn.dataset.val;
+    });
   });
 
-  els.pageBorder.addEventListener('change', (e) => {
-    state.pageBorder = e.target.value;
+  // Page Border Visual Grid
+  els.pageBorder.querySelectorAll('.border-card').forEach(card => {
+    card.addEventListener('click', () => {
+      els.pageBorder.querySelectorAll('.border-card').forEach(c => c.classList.remove('active'));
+      card.classList.add('active');
+      state.pageBorder = card.dataset.val;
+    });
   });
 
   // Margin inputs
