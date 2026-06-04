@@ -36,8 +36,8 @@
   background: var(--white);
   padding: 48px 40px;
 }
-.theme-clean h1 { font-size: 56px; font-weight: 700; letter-spacing: -.03em; line-height: 1.07; color: var(--black); margin-bottom: 24px; }
-.theme-clean h2 { font-size: 40px; font-weight: 700; letter-spacing: -.025em; line-height: 1.1; color: var(--black); margin: 64px 0 16px; border-bottom: none; padding-bottom: 0; }
+.theme-clean h1 { font-size: 42px; font-weight: 700; letter-spacing: -.03em; line-height: 1.1; color: var(--black); margin-bottom: 24px; }
+.theme-clean h2 { font-size: 32px; font-weight: 700; letter-spacing: -.025em; line-height: 1.15; color: var(--black); margin: 48px 0 16px; border-bottom: none; padding-bottom: 0; }
 .theme-clean h3 { font-size: 24px; font-weight: 600; letter-spacing: -.02em; color: var(--black); margin: 40px 0 16px; }
 .theme-clean p { margin: 12px 0; color: var(--gray1); }
 .theme-clean a { color: var(--blue); text-decoration: none; }
@@ -76,8 +76,8 @@
   background: var(--white);
   padding: 48px 40px;
 }
-.theme-dark h1 { font-size: 56px; font-weight: 700; letter-spacing: -.03em; line-height: 1.07; color: var(--black); margin-bottom: 24px; }
-.theme-dark h2 { font-size: 40px; font-weight: 700; letter-spacing: -.025em; line-height: 1.1; color: var(--black); margin: 64px 0 16px; border-bottom: none; padding-bottom: 0; }
+.theme-dark h1 { font-size: 42px; font-weight: 700; letter-spacing: -.03em; line-height: 1.1; color: var(--black); margin-bottom: 24px; }
+.theme-dark h2 { font-size: 32px; font-weight: 700; letter-spacing: -.025em; line-height: 1.15; color: var(--black); margin: 48px 0 16px; border-bottom: none; padding-bottom: 0; }
 .theme-dark h3 { font-size: 24px; font-weight: 600; letter-spacing: -.02em; color: var(--black); margin: 40px 0 16px; }
 .theme-dark p { margin: 12px 0; color: var(--gray1); }
 .theme-dark a { color: var(--blue); text-decoration: none; }

@@ -40,8 +40,8 @@ const themes = {
 ${baseCSS}
 :root { --black: #1d1d1f; --gray1: #424245; --gray2: #6e6e73; --gray3: #86868b; --gray4: #d2d2d7; --gray5: #f5f5f7; --white: #ffffff; --blue: #0071e3; }
 .export-themed { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 17px; line-height: 1.47; color: var(--black); background: var(--white); max-width: 740px; margin: 0 auto; -webkit-font-smoothing: antialiased; }
-.export-themed h1 { font-size: 56px; font-weight: 700; letter-spacing: -.03em; line-height: 1.07; color: var(--black); margin-bottom: 24px; }
-.export-themed h2 { font-size: 40px; font-weight: 700; letter-spacing: -.025em; line-height: 1.1; color: var(--black); margin: 64px 0 16px; border-bottom: none; }
+.export-themed h1 { font-size: 42px; font-weight: 700; letter-spacing: -.03em; line-height: 1.1; color: var(--black); margin-bottom: 24px; }
+.export-themed h2 { font-size: 32px; font-weight: 700; letter-spacing: -.025em; line-height: 1.15; color: var(--black); margin: 48px 0 16px; border-bottom: none; }
 .export-themed h3 { font-size: 24px; font-weight: 600; letter-spacing: -.02em; color: var(--black); margin: 40px 0 16px; }
 .export-themed p { margin: 12px 0; color: var(--gray1); }
 .export-themed a { color: var(--blue); text-decoration: none; }
@@ -67,8 +67,8 @@ ${baseCSS}
 ${baseCSS}
 :root { --black: #ffffff; --gray1: #e5e5ea; --gray2: #8e8e93; --gray3: #636366; --gray4: #38383a; --gray5: #1c1c1e; --white: #000000; --blue: #0A84FF; }
 .export-themed { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 17px; line-height: 1.47; color: var(--black); background: var(--white); max-width: 740px; margin: 0 auto; -webkit-font-smoothing: antialiased; }
-.export-themed h1 { font-size: 56px; font-weight: 700; letter-spacing: -.03em; line-height: 1.07; color: var(--black); margin-bottom: 24px; }
-.export-themed h2 { font-size: 40px; font-weight: 700; letter-spacing: -.025em; line-height: 1.1; color: var(--black); margin: 64px 0 16px; border-bottom: none; }
+.export-themed h1 { font-size: 42px; font-weight: 700; letter-spacing: -.03em; line-height: 1.1; color: var(--black); margin-bottom: 24px; }
+.export-themed h2 { font-size: 32px; font-weight: 700; letter-spacing: -.025em; line-height: 1.15; color: var(--black); margin: 48px 0 16px; border-bottom: none; }
 .export-themed h3 { font-size: 24px; font-weight: 600; letter-spacing: -.02em; color: var(--black); margin: 40px 0 16px; }
 .export-themed p { margin: 12px 0; color: var(--gray1); }
 .export-themed a { color: var(--blue); text-decoration: none; }

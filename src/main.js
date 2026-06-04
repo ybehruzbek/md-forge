@@ -368,7 +368,10 @@ async function handleExport() {
     return;
   }
 
-  const html = convertMarkdown(file.content);
+  // Clone preview to capture rendered Mermaid SVGs but remove UI elements
+  const previewClone = els.preview.cloneNode(true);
+  previewClone.querySelectorAll('.code-copy-btn').forEach(btn => btn.remove());
+  const html = await prepareHTMLForExport(previewClone.innerHTML);
   const themeCSS = getExportThemeCSS(state.exportTheme);
   const baseName = getBaseName(file.name);
   const pageSettings = {
@@ -409,6 +412,51 @@ async function handleExport() {
     els.exportBtn.disabled = false;
     els.exportBtn.querySelector('span').textContent = 'Export';
   }
+}
+
+async function prepareHTMLForExport(htmlString) {
+  const container = document.createElement('div');
+  container.innerHTML = htmlString;
+  document.body.appendChild(container); 
+  
+  const svgs = container.querySelectorAll('svg');
+  for (const svg of svgs) {
+    await new Promise((resolve) => {
+      try {
+        const xml = new XMLSerializer().serializeToString(svg);
+        const svg64 = btoa(unescape(encodeURIComponent(xml)));
+        const image64 = 'data:image/svg+xml;base64,' + svg64;
+        
+        const img = new Image();
+        img.onload = () => {
+          const canvas = document.createElement('canvas');
+          canvas.width = (img.width || svg.clientWidth || 800) * 2;
+          canvas.height = (img.height || svg.clientHeight || 400) * 2;
+          const ctx = canvas.getContext('2d');
+          ctx.fillStyle = '#ffffff'; 
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+          
+          const pngData = canvas.toDataURL('image/png');
+          const finalImg = document.createElement('img');
+          finalImg.src = pngData;
+          finalImg.style.width = (canvas.width / 2) + 'px';
+          finalImg.style.maxWidth = '100%';
+          
+          svg.replaceWith(finalImg);
+          resolve();
+        };
+        img.onerror = () => resolve();
+        img.src = image64;
+      } catch(e) {
+        resolve(); // skip on error
+      }
+    });
+  }
+  
+  const finalHtml = container.innerHTML;
+  document.body.removeChild(container);
+  return finalHtml;
 }
 
 async function handleBulkExport() {
