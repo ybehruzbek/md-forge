@@ -91,6 +91,11 @@ function init() {
 
   // Mark initial active theme option
   updateSegmentedControl();
+
+  // Prevent FOUC: Reveal UI smoothly
+  setTimeout(() => {
+    document.body.classList.add('ready');
+  }, 50);
 }
 
 // ===== DROPZONE =====
