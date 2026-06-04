@@ -86,7 +86,7 @@ export async function exportPDF(htmlContent, themeCSS, filename, theme = 'clean'
       format: pageSize,
       orientation: orientation,
     },
-    pagebreak: { mode: ['avoid-all', 'css', 'legacy'] },
+    pagebreak: { mode: ['css', 'legacy'] },
   };
 
   try {
