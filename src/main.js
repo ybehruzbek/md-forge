@@ -15,7 +15,7 @@ import { generateHTML, downloadHTML } from './converter/html.js';
 import { exportPDF } from './converter/pdf.js';
 import { exportDOCX } from './converter/docx.js';
 import { getExportThemeCSS } from './converter/themes-inline.js';
-import { initTheme, toggleTheme, getExportTheme, setExportTheme } from './utils/theme.js';
+import { initTheme, toggleTheme } from './utils/theme.js';
 import { readFileAsText, readMultipleFiles, downloadAsZip, getBaseName } from './utils/file-handler.js';
 import { showToast } from './components/toast.js';
 
@@ -24,7 +24,6 @@ const state = {
   files: [],          // Array of {name, content}
   activeIndex: 0,     // Current active file index
   format: 'html',     // Export format: html, pdf, docx
-  exportTheme: 'clean',
   zoom: 100,
   renderTimeout: null,
   // Page settings
@@ -50,8 +49,6 @@ function cacheDom() {
   els.preview = $('preview');
   els.charCount = $('char-count');
   els.formatPicker = $('format-picker');
-  els.themeBtn = $('theme-btn');
-  els.themeMenu = $('theme-menu');
   els.darkToggle = $('darkmode-toggle');
   els.exportBtn = $('export-btn');
   els.sidebar = $('sidebar');
@@ -84,7 +81,6 @@ function cacheDom() {
 function init() {
   cacheDom();
   initTheme();
-  state.exportTheme = getExportTheme();
 
   bindDropzone();
   bindEditor();
@@ -94,7 +90,6 @@ function init() {
   bindSettings();
 
   // Mark initial active theme option
-  updateExportThemeUI();
   updateSegmentedControl();
 }
 
@@ -227,6 +222,19 @@ async function renderPreview() {
   const html = convertMarkdown(md);
   els.preview.innerHTML = html;
 
+  // Add skeleton overlay
+  const skeleton = document.createElement('div');
+  skeleton.className = 'loading-overlay';
+  skeleton.innerHTML = `
+    <div class="skeleton skeleton-title" style="max-width:300px"></div>
+    <div class="skeleton skeleton-text"></div>
+    <div class="skeleton skeleton-text"></div>
+    <div class="skeleton skeleton-text" style="max-width:80%"></div>
+    <div style="height:32px"></div>
+    <div class="skeleton skeleton-block"></div>
+  `;
+  els.preview.appendChild(skeleton);
+
   // Render mermaid diagrams
   await renderMermaid(els.preview);
 
@@ -239,6 +247,12 @@ async function renderPreview() {
         setTimeout(() => btn.textContent = 'Nusxalash', 1500);
       });
     });
+  });
+
+  // Fade out skeleton smoothly
+  requestAnimationFrame(() => {
+    skeleton.classList.add('fade-out');
+    setTimeout(() => skeleton.remove(), 300);
   });
 }
 
@@ -258,30 +272,6 @@ function bindToolbar() {
   els.darkToggle.addEventListener('click', () => {
     const newTheme = toggleTheme();
     showToast(newTheme === 'dark' ? 'Qorong\'u rejim' : 'Yorug\' rejim', 'info', 1500);
-  });
-
-  // Theme picker dropdown
-  els.themeBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    els.themeMenu.classList.toggle('hidden');
-  });
-
-  document.addEventListener('click', () => {
-    els.themeMenu.classList.add('hidden');
-  });
-
-  els.themeMenu.addEventListener('click', (e) => {
-    e.stopPropagation();
-  });
-
-  els.themeMenu.querySelectorAll('.theme-option').forEach(btn => {
-    btn.addEventListener('click', () => {
-      state.exportTheme = btn.dataset.exportTheme;
-      setExportTheme(state.exportTheme);
-      updateExportThemeUI();
-      els.themeMenu.classList.add('hidden');
-      showToast(`Tema: ${btn.textContent}`, 'info', 1500);
-    });
   });
 
   // Export button
@@ -349,16 +339,12 @@ function updateSegmentedControl() {
   }
 }
 
-function updateExportThemeUI() {
-  els.themeMenu.querySelectorAll('.theme-option').forEach(btn => {
-    btn.classList.toggle('active', btn.dataset.exportTheme === state.exportTheme);
-  });
-}
-
 function applyZoom() {
   els.preview.style.fontSize = `${(state.zoom / 100) * 15}px`;
   els.zoomLevel.textContent = `${state.zoom}%`;
 }
+
+
 
 // ===== EXPORT =====
 async function handleExport() {
@@ -372,7 +358,7 @@ async function handleExport() {
   const previewClone = els.preview.cloneNode(true);
   previewClone.querySelectorAll('.code-copy-btn').forEach(btn => btn.remove());
   const html = await prepareHTMLForExport(previewClone.innerHTML);
-  const themeCSS = getExportThemeCSS(state.exportTheme);
+  const themeCSS = getExportThemeCSS();
   const baseName = getBaseName(file.name);
   const pageSettings = {
     pageSize: state.pageSize,
@@ -387,14 +373,14 @@ async function handleExport() {
 
     switch (state.format) {
       case 'html': {
-        const fullHTML = generateHTML(html, state.exportTheme, baseName, pageSettings);
+        const fullHTML = generateHTML(html, 'clean', baseName, pageSettings);
         downloadHTML(fullHTML, file.name);
         showToast('HTML eksport qilindi ✓', 'success');
         break;
       }
       case 'pdf': {
         showToast('PDF tayyorlanmoqda...', 'info', 2000);
-        await exportPDF(html, themeCSS, file.name, state.exportTheme, pageSettings);
+        await exportPDF(html, themeCSS, file.name, 'clean', pageSettings);
         showToast('PDF eksport qilindi ✓', 'success');
         break;
       }

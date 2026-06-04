@@ -55,14 +55,3 @@ export function toggleTheme() {
 export function getTheme() {
   return document.documentElement.dataset.theme || 'light';
 }
-
-/**
- * Get/set export theme
- */
-export function getExportTheme() {
-  return localStorage.getItem(EXPORT_THEME_KEY) || 'clean';
-}
-
-export function setExportTheme(theme) {
-  localStorage.setItem(EXPORT_THEME_KEY, theme);
-}
