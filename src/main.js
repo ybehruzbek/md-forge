@@ -230,9 +230,9 @@ async function renderPreview() {
   try {
     if (window.twemoji) {
       twemoji.parse(els.preview, {
-        base: 'https://cdnjs.cloudflare.com/ajax/libs/emoji-datasource-apple/15.0.1/img/apple/64/',
-        ext: '.png',
-        folder: '',
+        callback: function(icon, options, variant) {
+          return 'https://cdnjs.cloudflare.com/ajax/libs/emoji-datasource-apple/15.0.1/img/apple/64/' + icon + '.png';
+        },
         className: 'apple-emoji'
       });
     }
