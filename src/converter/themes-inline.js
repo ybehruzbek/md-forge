@@ -19,13 +19,14 @@ const baseCSS = `
 .export-themed a { text-decoration: none; }
 .export-themed a:hover { text-decoration: underline; }
 .export-themed strong { font-weight: 600; }
-.export-themed img { max-width: 100%; border-radius: 8px; margin: 1em 0; }
 .export-themed ul, .export-themed ol { padding-left: 1.5em; margin: 0.6em 0; }
 .export-themed li { margin: 0.25em 0; }
 .export-themed table { width: 100%; border-collapse: collapse; margin: 1em 0; font-size: 14px; }
 .export-themed th { text-align: left; font-weight: 600; padding: 10px 12px; }
 .export-themed td { padding: 8px 12px; }
-.export-themed hr { border: none; height: 1px; margin: 2em 0; }
+.export-themed hr { border: none; height: 1px; margin: 32px 0; }
+.export-themed img { max-width: 100%; border-radius: 8px; margin: 1em 0; }
+.export-themed img.apple-emoji { width: 1.15em; height: 1.15em; margin: 0 0.05em 0 0.1em; vertical-align: -0.2em; display: inline-block; border-radius: 0; box-shadow: none; border: none; }
 .export-themed pre { margin: 1em 0; border-radius: 8px; overflow: hidden; }
 .export-themed pre code { display: block; padding: 16px 20px; font-size: 13px; line-height: 1.6; overflow-x: auto; border-radius: 8px; }
 .export-themed code { font-size: 0.88em; padding: 2px 6px; border-radius: 4px; }

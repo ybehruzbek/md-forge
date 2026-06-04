@@ -226,6 +226,20 @@ async function renderPreview() {
   const html = convertMarkdown(md);
   els.preview.innerHTML = html;
 
+  // Convert emojis to Apple style
+  try {
+    if (window.twemoji) {
+      twemoji.parse(els.preview, {
+        base: 'https://cdnjs.cloudflare.com/ajax/libs/emoji-datasource-apple/15.0.1/img/apple/64/',
+        ext: '.png',
+        folder: '',
+        className: 'apple-emoji'
+      });
+    }
+  } catch (e) {
+    console.warn('Twemoji parse error:', e);
+  }
+
   // Add skeleton overlay
   const skeleton = document.createElement('div');
   skeleton.className = 'loading-overlay';

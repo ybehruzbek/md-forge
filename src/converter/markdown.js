@@ -83,7 +83,7 @@ function processAlerts(md) {
     TIP: { icon: '💡', cls: 'alert-tip' },
     IMPORTANT: { icon: '❗', cls: 'alert-important' },
     WARNING: { icon: '⚠️', cls: 'alert-warning' },
-    CAUTION: { icon: '🔴', cls: 'alert-caution' },
+    CAUTION: { icon: '', cls: 'alert-caution' },
   };
 
   // Match blockquote alert pattern

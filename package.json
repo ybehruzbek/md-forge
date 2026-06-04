@@ -15,7 +15,8 @@
     "html2pdf.js": "^0.10.2",
     "jszip": "^3.10.1",
     "marked": "^15.0.7",
-    "mermaid": "^11.4.1"
+    "mermaid": "^11.4.1",
+    "twemoji": "^14.0.2"
   },
   "devDependencies": {
     "vite": "^6.3.5"
