@@ -60,11 +60,14 @@
 
 /* Apple Emoji Styles */
 .apple-emoji {
-  width: 1.15em;
-  height: 1.15em;
-  margin: 0 0.05em 0 0.1em;
-  vertical-align: -0.2em;
-  display: inline-block;
+  width: 1.15em !important;
+  height: 1.15em !important;
+  margin: 0 0.05em 0 0.1em !important;
+  vertical-align: -0.15em !important;
+  display: inline !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  border: none !important;
 }
 
 /* Logo */
