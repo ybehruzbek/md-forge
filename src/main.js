@@ -416,6 +416,9 @@ async function handleExport() {
 
 async function prepareHTMLForExport(htmlString) {
   const container = document.createElement('div');
+  container.style.position = 'absolute';
+  container.style.visibility = 'hidden';
+  container.style.width = '800px'; // Give it a fixed width so svgs can resolve 100% width
   container.innerHTML = htmlString;
   document.body.appendChild(container); 
   
@@ -423,6 +426,15 @@ async function prepareHTMLForExport(htmlString) {
   for (const svg of svgs) {
     await new Promise((resolve) => {
       try {
+        let w = svg.viewBox.baseVal?.width;
+        let h = svg.viewBox.baseVal?.height;
+        
+        if (!w || !h) {
+          const rect = svg.getBoundingClientRect();
+          w = rect.width || 800;
+          h = rect.height || 400;
+        }
+
         const xml = new XMLSerializer().serializeToString(svg);
         const svg64 = btoa(unescape(encodeURIComponent(xml)));
         const image64 = 'data:image/svg+xml;base64,' + svg64;
@@ -430,18 +442,20 @@ async function prepareHTMLForExport(htmlString) {
         const img = new Image();
         img.onload = () => {
           const canvas = document.createElement('canvas');
-          canvas.width = (img.width || svg.clientWidth || 800) * 2;
-          canvas.height = (img.height || svg.clientHeight || 400) * 2;
+          canvas.width = w * 2;
+          canvas.height = h * 2;
           const ctx = canvas.getContext('2d');
-          ctx.fillStyle = '#ffffff'; 
-          ctx.fillRect(0, 0, canvas.width, canvas.height);
+          
+          // Canvas is transparent by default. No fillRect needed.
           ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
           
           const pngData = canvas.toDataURL('image/png');
           const finalImg = document.createElement('img');
           finalImg.src = pngData;
-          finalImg.style.width = (canvas.width / 2) + 'px';
+          finalImg.style.width = w + 'px';
           finalImg.style.maxWidth = '100%';
+          finalImg.style.display = 'block';
+          finalImg.style.margin = '0 auto';
           
           svg.replaceWith(finalImg);
           resolve();
