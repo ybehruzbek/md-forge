@@ -226,16 +226,12 @@ async function renderPreview() {
   const html = convertMarkdown(md);
   els.preview.innerHTML = html;
 
-  // Convert emojis to Apple style
+  // Convert emojis to Apple-style icons (SVG from twemoji CDN)
   try {
     if (window.twemoji) {
       twemoji.parse(els.preview, {
-        callback: function(icon, options, variant) {
-          // Reconstruct the actual emoji character from the hex code
-          const emojiChar = String.fromCodePoint(...icon.split('-').map(x => parseInt(x, 16)));
-          // Use Elk.sh CDN which perfectly maps the character to Apple style
-          return 'https://emojicdn.elk.sh/' + emojiChar + '?style=apple';
-        },
+        folder: 'svg',
+        ext: '.svg',
         className: 'apple-emoji'
       });
     }
