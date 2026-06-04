@@ -6,7 +6,6 @@
 import { marked } from 'marked';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/github-dark.min.css';
-import twemoji from 'twemoji';
 
 // Store mermaid blocks for later rendering
 let mermaidBlocks = [];
@@ -114,19 +113,7 @@ export function convertMarkdown(md) {
   let processed = processAlerts(md);
 
   // Parse with marked
-  let html = marked.parse(processed);
-
-  // Convert emojis to Apple style
-  try {
-    html = twemoji.parse(html, {
-      base: 'https://cdnjs.cloudflare.com/ajax/libs/emoji-datasource-apple/15.0.1/img/apple/64/',
-      ext: '.png',
-      folder: '',
-      className: 'apple-emoji'
-    });
-  } catch (e) {
-    console.error('Emoji parse error:', e);
-  }
+  const html = marked.parse(processed);
 
   return html;
 }
