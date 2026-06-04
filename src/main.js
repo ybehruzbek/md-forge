@@ -231,7 +231,10 @@ async function renderPreview() {
     if (window.twemoji) {
       twemoji.parse(els.preview, {
         callback: function(icon, options, variant) {
-          return 'https://cdnjs.cloudflare.com/ajax/libs/emoji-datasource-apple/15.0.1/img/apple/64/' + icon + '.png';
+          // Reconstruct the actual emoji character from the hex code
+          const emojiChar = String.fromCodePoint(...icon.split('-').map(x => parseInt(x, 16)));
+          // Use Elk.sh CDN which perfectly maps the character to Apple style
+          return 'https://emojicdn.elk.sh/' + emojiChar + '?style=apple';
         },
         className: 'apple-emoji'
       });
