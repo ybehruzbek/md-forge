@@ -533,6 +533,14 @@ body.editor-active .app-main {
   color: var(--text-primary);
   outline: none;
   padding: 0;
+  -moz-appearance: textfield;
+}
+
+/* Hide spin buttons */
+.margin-input-wrap input::-webkit-outer-spin-button,
+.margin-input-wrap input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 /* Border Visual Grid */
