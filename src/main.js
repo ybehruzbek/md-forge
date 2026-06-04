@@ -11,7 +11,6 @@ import './styles/themes.css';
 
 // Modules
 import { convertMarkdown, renderMermaid } from './converter/markdown.js';
-import { generateHTML, downloadHTML } from './converter/html.js';
 import { exportPDF } from './converter/pdf.js';
 import { exportDOCX } from './converter/docx.js';
 import { getExportThemeCSS } from './converter/themes-inline.js';
@@ -23,7 +22,7 @@ import { showToast } from './components/toast.js';
 const state = {
   files: [],          // Array of {name, content}
   activeIndex: 0,     // Current active file index
-  format: 'html',     // Export format: html, pdf, docx
+  format: 'pdf',      // Export format: pdf, docx
   zoom: 100,
   renderTimeout: null,
   // Page settings
@@ -377,12 +376,6 @@ async function handleExport() {
     els.exportBtn.querySelector('span').textContent = '...';
 
     switch (state.format) {
-      case 'html': {
-        const fullHTML = generateHTML(html, 'clean', baseName, pageSettings);
-        downloadHTML(fullHTML, file.name);
-        showToast('HTML eksport qilindi ✓', 'success');
-        break;
-      }
       case 'pdf': {
         showToast('PDF tayyorlanmoqda...', 'info', 2000);
         await exportPDF(html, themeCSS, file.name, 'clean', pageSettings);
