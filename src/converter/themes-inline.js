@@ -26,7 +26,6 @@ const baseCSS = `
 .export-themed td { padding: 8px 12px; }
 .export-themed hr { border: none; height: 1px; margin: 32px 0; }
 .export-themed img { max-width: 100%; border-radius: 8px; margin: 1em 0; }
-.export-themed img.apple-emoji { width: 1.15em !important; height: 1.15em !important; margin: 0 0.05em 0 0.1em !important; vertical-align: -0.15em !important; display: inline !important; border-radius: 0 !important; box-shadow: none !important; border: none !important; }
 .export-themed pre { margin: 1em 0; border-radius: 8px; overflow: hidden; }
 .export-themed pre code { display: block; padding: 16px 20px; font-size: 13px; line-height: 1.6; overflow-x: auto; border-radius: 8px; }
 .export-themed code { font-size: 0.88em; padding: 2px 6px; border-radius: 4px; }

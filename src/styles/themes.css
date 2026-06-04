@@ -12,7 +12,6 @@
 
 .export-themed hr { border: none; height: 1px; margin: 32px 0; }
 .export-themed img { max-width: 100%; border-radius: 8px; margin: 1em 0; }
-.export-themed img.apple-emoji { width: 1.15em !important; height: 1.15em !important; margin: 0 0.05em 0 0.1em !important; vertical-align: -0.15em !important; display: inline !important; border-radius: 0 !important; box-shadow: none !important; border: none !important; }
 .export-themed ul, .export-themed ol { padding-left: 24px; margin: 20px 0; }
 .export-themed li { padding: 4px 0; }
 

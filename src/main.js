@@ -226,19 +226,6 @@ async function renderPreview() {
   const html = convertMarkdown(md);
   els.preview.innerHTML = html;
 
-  // Convert emojis to Apple-style icons (SVG from twemoji CDN)
-  try {
-    if (window.twemoji) {
-      twemoji.parse(els.preview, {
-        folder: 'svg',
-        ext: '.svg',
-        className: 'apple-emoji'
-      });
-    }
-  } catch (e) {
-    console.warn('Twemoji parse error:', e);
-  }
-
   // Add skeleton overlay
   const skeleton = document.createElement('div');
   skeleton.className = 'loading-overlay';
