@@ -38,39 +38,57 @@ const baseCSS = `
 const themes = {
   clean: `
 ${baseCSS}
-.export-themed { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif; font-size: 15px; line-height: 1.7; color: #1d1d1f; background: #ffffff; max-width: 720px; margin: 0 auto; }
-.export-themed h1, .export-themed h2, .export-themed h3 { color: #1d1d1f; }
-.export-themed h2 { border-bottom: 1px solid #e5e5ea; }
-.export-themed a { color: #007AFF; }
-.export-themed code { background: #f5f5f7; color: #1d1d1f; font-family: 'SF Mono', 'Fira Code', Consolas, monospace; }
-.export-themed pre code { background: #f5f5f7; color: #1d1d1f; }
-.export-themed blockquote { border-color: #007AFF; background: #f5f5f7; color: #6e6e73; }
-.export-themed th { background: #f5f5f7; border-bottom: 2px solid #e5e5ea; }
-.export-themed td { border-bottom: 1px solid #f0f0f0; }
-.export-themed hr { background: #e5e5ea; }
-.alert-note { background: rgba(0,122,255,0.08); border-color: #007AFF; }
-.alert-tip { background: rgba(52,199,89,0.08); border-color: #34C759; }
-.alert-important { background: rgba(175,82,222,0.08); border-color: #af52de; }
-.alert-warning { background: rgba(255,149,0,0.08); border-color: #FF9500; }
-.alert-caution { background: rgba(255,59,48,0.08); border-color: #FF3B30; }
+:root { --black: #1d1d1f; --gray1: #424245; --gray2: #6e6e73; --gray3: #86868b; --gray4: #d2d2d7; --gray5: #f5f5f7; --white: #ffffff; --blue: #0071e3; }
+.export-themed { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 17px; line-height: 1.47; color: var(--black); background: var(--white); max-width: 740px; margin: 0 auto; -webkit-font-smoothing: antialiased; }
+.export-themed h1 { font-size: 56px; font-weight: 700; letter-spacing: -.03em; line-height: 1.07; color: var(--black); margin-bottom: 24px; }
+.export-themed h2 { font-size: 40px; font-weight: 700; letter-spacing: -.025em; line-height: 1.1; color: var(--black); margin: 64px 0 16px; border-bottom: none; }
+.export-themed h3 { font-size: 24px; font-weight: 600; letter-spacing: -.02em; color: var(--black); margin: 40px 0 16px; }
+.export-themed p { margin: 12px 0; color: var(--gray1); }
+.export-themed a { color: var(--blue); text-decoration: none; }
+.export-themed code { background: var(--gray5); color: var(--black); font-family: 'SF Mono', Consolas, monospace; font-size: 14px; padding: 3px 6px; border-radius: 6px; }
+.export-themed pre { background: var(--gray5); border-radius: 16px; padding: 20px; margin: 24px 0; border: none; }
+.export-themed pre code { background: transparent; padding: 0; }
+.export-themed blockquote { background: var(--gray5); border-radius: 16px; padding: 20px 24px; margin: 24px 0; font-size: 15px; color: var(--gray1); line-height: 1.53; border-left: none; }
+.export-themed blockquote strong { color: var(--black); }
+.export-themed table { width: 100%; border-collapse: collapse; font-size: 14px; letter-spacing: -.01em; margin: 20px 0; min-width: 480px; }
+.export-themed th { text-align: left; font-weight: 600; color: var(--gray3); font-size: 12px; text-transform: uppercase; letter-spacing: .04em; padding: 8px 14px 10px; border-bottom: 1px solid var(--gray4); white-space: nowrap; background: transparent; }
+.export-themed td { padding: 12px 14px; border-bottom: .5px solid rgba(0,0,0,.06); color: var(--gray1); }
+.export-themed td strong { color: var(--black); font-weight: 600; }
+.export-themed hr { border: none; border-top: .5px solid var(--gray4); margin: 32px 0; background: transparent; height: 0; }
+.export-themed ul, .export-themed ol { margin: 20px 0; padding-left: 24px; color: var(--gray1); }
+.export-themed li { padding: 4px 0; }
+.alert-note { background: #edf4ff; border-color: transparent; }
+.alert-tip { background: #eefbf0; border-color: transparent; }
+.alert-important { background: #fff0f0; border-color: transparent; }
+.alert-warning { background: #fff8ee; border-color: transparent; }
+.alert-caution { background: #fff0f0; border-color: transparent; }
 `,
   dark: `
 ${baseCSS}
-.export-themed { font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif; font-size: 15px; line-height: 1.7; color: #f5f5f7; background: #1c1c1e; max-width: 720px; margin: 0 auto; }
-.export-themed h1, .export-themed h2, .export-themed h3 { color: #ffffff; }
-.export-themed h2 { border-bottom: 1px solid #38383a; }
-.export-themed a { color: #0A84FF; }
-.export-themed code { background: #2c2c2e; color: #f5f5f7; font-family: 'SF Mono', 'Fira Code', Consolas, monospace; }
-.export-themed pre code { background: #2c2c2e; color: #e4e4e7; }
-.export-themed blockquote { border-color: #0A84FF; background: rgba(10,132,255,0.1); color: #98989d; }
-.export-themed th { background: #2c2c2e; border-bottom: 2px solid #38383a; }
-.export-themed td { border-bottom: 1px solid #38383a; }
-.export-themed hr { background: #38383a; }
-.alert-note { background: rgba(10,132,255,0.15); border-color: #0A84FF; }
-.alert-tip { background: rgba(48,209,88,0.15); border-color: #30D158; }
-.alert-important { background: rgba(191,90,242,0.15); border-color: #BF5AF2; }
-.alert-warning { background: rgba(255,159,10,0.15); border-color: #FF9F0A; }
-.alert-caution { background: rgba(255,69,58,0.15); border-color: #FF453A; }
+:root { --black: #ffffff; --gray1: #e5e5ea; --gray2: #8e8e93; --gray3: #636366; --gray4: #38383a; --gray5: #1c1c1e; --white: #000000; --blue: #0A84FF; }
+.export-themed { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 17px; line-height: 1.47; color: var(--black); background: var(--white); max-width: 740px; margin: 0 auto; -webkit-font-smoothing: antialiased; }
+.export-themed h1 { font-size: 56px; font-weight: 700; letter-spacing: -.03em; line-height: 1.07; color: var(--black); margin-bottom: 24px; }
+.export-themed h2 { font-size: 40px; font-weight: 700; letter-spacing: -.025em; line-height: 1.1; color: var(--black); margin: 64px 0 16px; border-bottom: none; }
+.export-themed h3 { font-size: 24px; font-weight: 600; letter-spacing: -.02em; color: var(--black); margin: 40px 0 16px; }
+.export-themed p { margin: 12px 0; color: var(--gray1); }
+.export-themed a { color: var(--blue); text-decoration: none; }
+.export-themed code { background: var(--gray5); color: var(--black); font-family: 'SF Mono', Consolas, monospace; font-size: 14px; padding: 3px 6px; border-radius: 6px; }
+.export-themed pre { background: var(--gray5); border-radius: 16px; padding: 20px; margin: 24px 0; border: none; }
+.export-themed pre code { background: transparent; padding: 0; }
+.export-themed blockquote { background: var(--gray5); border-radius: 16px; padding: 20px 24px; margin: 24px 0; font-size: 15px; color: var(--gray1); line-height: 1.53; border-left: none; }
+.export-themed blockquote strong { color: var(--black); }
+.export-themed table { width: 100%; border-collapse: collapse; font-size: 14px; letter-spacing: -.01em; margin: 20px 0; min-width: 480px; }
+.export-themed th { text-align: left; font-weight: 600; color: var(--gray3); font-size: 12px; text-transform: uppercase; letter-spacing: .04em; padding: 8px 14px 10px; border-bottom: 1px solid var(--gray4); white-space: nowrap; background: transparent; }
+.export-themed td { padding: 12px 14px; border-bottom: .5px solid rgba(255,255,255,.1); color: var(--gray1); }
+.export-themed td strong { color: var(--black); font-weight: 600; }
+.export-themed hr { border: none; border-top: .5px solid var(--gray4); margin: 32px 0; background: transparent; height: 0; }
+.export-themed ul, .export-themed ol { margin: 20px 0; padding-left: 24px; color: var(--gray1); }
+.export-themed li { padding: 4px 0; }
+.alert-note { background: rgba(10,132,255,0.15); border-color: transparent; }
+.alert-tip { background: rgba(48,209,88,0.15); border-color: transparent; }
+.alert-important { background: rgba(191,90,242,0.15); border-color: transparent; }
+.alert-warning { background: rgba(255,159,10,0.15); border-color: transparent; }
+.alert-caution { background: rgba(255,69,58,0.15); border-color: transparent; }
 `,
   academic: `
 ${baseCSS}

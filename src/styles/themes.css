@@ -1,51 +1,102 @@
 /* ============================================
-   MD Forge — Export Themes
-   4 themes for exported documents
+   MD Forge — Export & Preview Themes
+   4 themes for rendered documents
    ============================================ */
 
-/* ===== CLEAN WHITE — Apple Docs ===== */
-.theme-clean {
-  --t-bg: #ffffff;
-  --t-text: #1d1d1f;
-  --t-text-sec: #6e6e73;
-  --t-heading: #1d1d1f;
-  --t-accent: #007AFF;
-  --t-border: #e5e5ea;
-  --t-code-bg: #f5f5f7;
-  --t-code-text: #1d1d1f;
-  --t-pre-bg: #f5f5f7;
-  --t-pre-text: #1d1d1f;
-  --t-blockquote-bg: #f5f5f7;
-  --t-blockquote-border: #007AFF;
-  --t-th-bg: #f5f5f7;
-  --t-font: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
-  --t-font-mono: 'SF Mono', 'Fira Code', Consolas, monospace;
-  --t-font-size: 15px;
-  --t-line-height: 1.7;
-  --t-max-width: 720px;
+/* ===== Base Styles ===== */
+.export-themed {
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
 }
+.export-themed * { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* ===== DARK ELEGANT — WWDC ===== */
-.theme-dark {
-  --t-bg: #1c1c1e;
-  --t-text: #f5f5f7;
-  --t-text-sec: #98989d;
-  --t-heading: #ffffff;
-  --t-accent: #0A84FF;
-  --t-border: #38383a;
-  --t-code-bg: #2c2c2e;
-  --t-code-text: #f5f5f7;
-  --t-pre-bg: #2c2c2e;
-  --t-pre-text: #e4e4e7;
-  --t-blockquote-bg: rgba(10, 132, 255, 0.1);
-  --t-blockquote-border: #0A84FF;
-  --t-th-bg: #2c2c2e;
-  --t-font: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
-  --t-font-mono: 'SF Mono', 'Fira Code', Consolas, monospace;
-  --t-font-size: 15px;
-  --t-line-height: 1.7;
-  --t-max-width: 720px;
+.export-themed hr { border: none; height: 1px; margin: 32px 0; }
+.export-themed img { max-width: 100%; border-radius: 8px; margin: 1em 0; }
+.export-themed ul, .export-themed ol { padding-left: 24px; margin: 20px 0; }
+.export-themed li { padding: 4px 0; }
+
+.alert-block { padding: 12px 16px; margin: 1em 0; border-radius: 8px; border-left: 4px solid; font-size: 14px; }
+.alert-block .alert-title { font-weight: 600; font-size: 13px; margin-bottom: 4px; }
+
+/* ===== CLEAN WHITE — Library ID Biznes Model ===== */
+.theme-clean {
+  --black: #1d1d1f;
+  --gray1: #424245;
+  --gray2: #6e6e73;
+  --gray3: #86868b;
+  --gray4: #d2d2d7;
+  --gray5: #f5f5f7;
+  --white: #ffffff;
+  --blue: #0071e3;
+  
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.47;
+  color: var(--black);
+  background: var(--white);
+  padding: 48px 40px;
 }
+.theme-clean h1 { font-size: 56px; font-weight: 700; letter-spacing: -.03em; line-height: 1.07; color: var(--black); margin-bottom: 24px; }
+.theme-clean h2 { font-size: 40px; font-weight: 700; letter-spacing: -.025em; line-height: 1.1; color: var(--black); margin: 64px 0 16px; border-bottom: none; padding-bottom: 0; }
+.theme-clean h3 { font-size: 24px; font-weight: 600; letter-spacing: -.02em; color: var(--black); margin: 40px 0 16px; }
+.theme-clean p { margin: 12px 0; color: var(--gray1); }
+.theme-clean a { color: var(--blue); text-decoration: none; }
+.theme-clean code { background: var(--gray5); color: var(--black); font-family: 'SF Mono', Consolas, monospace; font-size: 14px; padding: 3px 6px; border-radius: 6px; }
+.theme-clean pre { background: var(--gray5); border-radius: 16px; padding: 20px; margin: 24px 0; border: none; overflow-x: auto; }
+.theme-clean pre code { background: transparent; padding: 0; }
+.theme-clean blockquote { background: var(--gray5); border-radius: 16px; padding: 20px 24px; margin: 24px 0; font-size: 15px; color: var(--gray1); line-height: 1.53; border-left: none; }
+.theme-clean blockquote strong { color: var(--black); }
+.theme-clean table { width: 100%; border-collapse: collapse; font-size: 14px; letter-spacing: -.01em; margin: 20px 0; min-width: 480px; }
+.theme-clean th { text-align: left; font-weight: 600; color: var(--gray3); font-size: 12px; text-transform: uppercase; letter-spacing: .04em; padding: 8px 14px 10px; border-bottom: 1px solid var(--gray4); white-space: nowrap; background: transparent; }
+.theme-clean td { padding: 12px 14px; border-bottom: .5px solid rgba(0,0,0,.06); color: var(--gray1); }
+.theme-clean td strong { color: var(--black); font-weight: 600; }
+.theme-clean hr { border-top: .5px solid var(--gray4); background: transparent; height: 0; }
+
+.theme-clean .alert-note { background: #edf4ff; border-color: transparent; }
+.theme-clean .alert-tip { background: #eefbf0; border-color: transparent; }
+.theme-clean .alert-important { background: #fff0f0; border-color: transparent; }
+.theme-clean .alert-warning { background: #fff8ee; border-color: transparent; }
+.theme-clean .alert-caution { background: #fff0f0; border-color: transparent; }
+
+/* ===== DARK ELEGANT ===== */
+.theme-dark {
+  --black: #ffffff;
+  --gray1: #e5e5ea;
+  --gray2: #8e8e93;
+  --gray3: #636366;
+  --gray4: #38383a;
+  --gray5: #1c1c1e;
+  --white: #000000;
+  --blue: #0A84FF;
+  
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.47;
+  color: var(--black);
+  background: var(--white);
+  padding: 48px 40px;
+}
+.theme-dark h1 { font-size: 56px; font-weight: 700; letter-spacing: -.03em; line-height: 1.07; color: var(--black); margin-bottom: 24px; }
+.theme-dark h2 { font-size: 40px; font-weight: 700; letter-spacing: -.025em; line-height: 1.1; color: var(--black); margin: 64px 0 16px; border-bottom: none; padding-bottom: 0; }
+.theme-dark h3 { font-size: 24px; font-weight: 600; letter-spacing: -.02em; color: var(--black); margin: 40px 0 16px; }
+.theme-dark p { margin: 12px 0; color: var(--gray1); }
+.theme-dark a { color: var(--blue); text-decoration: none; }
+.theme-dark code { background: var(--gray5); color: var(--black); font-family: 'SF Mono', Consolas, monospace; font-size: 14px; padding: 3px 6px; border-radius: 6px; }
+.theme-dark pre { background: var(--gray5); border-radius: 16px; padding: 20px; margin: 24px 0; border: none; overflow-x: auto; }
+.theme-dark pre code { background: transparent; padding: 0; }
+.theme-dark blockquote { background: var(--gray5); border-radius: 16px; padding: 20px 24px; margin: 24px 0; font-size: 15px; color: var(--gray1); line-height: 1.53; border-left: none; }
+.theme-dark blockquote strong { color: var(--black); }
+.theme-dark table { width: 100%; border-collapse: collapse; font-size: 14px; letter-spacing: -.01em; margin: 20px 0; min-width: 480px; }
+.theme-dark th { text-align: left; font-weight: 600; color: var(--gray3); font-size: 12px; text-transform: uppercase; letter-spacing: .04em; padding: 8px 14px 10px; border-bottom: 1px solid var(--gray4); white-space: nowrap; background: transparent; }
+.theme-dark td { padding: 12px 14px; border-bottom: .5px solid rgba(255,255,255,0.1); color: var(--gray1); }
+.theme-dark td strong { color: var(--black); font-weight: 600; }
+.theme-dark hr { border-top: .5px solid var(--gray4); background: transparent; height: 0; }
+
+.theme-dark .alert-note { background: rgba(10,132,255,0.15); border-color: transparent; }
+.theme-dark .alert-tip { background: rgba(48,209,88,0.15); border-color: transparent; }
+.theme-dark .alert-important { background: rgba(191,90,242,0.15); border-color: transparent; }
+.theme-dark .alert-warning { background: rgba(255,159,10,0.15); border-color: transparent; }
+.theme-dark .alert-caution { background: rgba(255,69,58,0.15); border-color: transparent; }
 
 /* ===== ACADEMIC — Research Paper ===== */
 .theme-academic {
@@ -66,8 +117,27 @@
   --t-font-mono: 'Courier New', Courier, monospace;
   --t-font-size: 16px;
   --t-line-height: 1.8;
-  --t-max-width: 680px;
+  
+  font-family: var(--t-font);
+  font-size: var(--t-font-size);
+  line-height: var(--t-line-height);
+  color: var(--t-text);
+  background: var(--t-bg);
+  padding: 48px 32px;
 }
+.theme-academic h1, .theme-academic h2, .theme-academic h3 { color: var(--t-heading); font-family: var(--t-font); }
+.theme-academic h1 { font-size: 2em; margin: 1.2em 0 0.6em; font-weight: 700; }
+.theme-academic h2 { font-size: 1.5em; margin: 1.2em 0 0.5em; font-weight: 600; border-bottom: 1px solid var(--t-border); padding-bottom: 0.3em; }
+.theme-academic h3 { font-size: 1.25em; margin: 1em 0 0.5em; font-weight: 600; }
+.theme-academic a { color: var(--t-accent); }
+.theme-academic code { font-family: var(--t-font-mono); font-size: 0.88em; background: var(--t-code-bg); color: var(--t-code-text); padding: 2px 6px; border-radius: 4px; }
+.theme-academic pre { background: var(--t-pre-bg); border-radius: 8px; margin: 1em 0; overflow-x: auto; }
+.theme-academic pre code { background: transparent; padding: 16px 20px; display: block; color: var(--t-pre-text); }
+.theme-academic blockquote { border-left: 3px solid var(--t-blockquote-border); padding: 8px 16px; margin: 1em 0; background: var(--t-blockquote-bg); color: var(--t-text-sec); }
+.theme-academic table { width: 100%; border-collapse: collapse; margin: 1em 0; }
+.theme-academic th { text-align: left; font-weight: 600; padding: 10px 12px; background: var(--t-th-bg); border-bottom: 2px solid var(--t-border); }
+.theme-academic td { padding: 8px 12px; border-bottom: 1px solid var(--t-border); }
+.theme-academic hr { border-top: 1px solid var(--t-border); }
 
 /* ===== MINIMAL — Maximum Whitespace ===== */
 .theme-minimal {
@@ -88,74 +158,32 @@
   --t-font-mono: 'SF Mono', Consolas, monospace;
   --t-font-size: 16px;
   --t-line-height: 1.8;
-  --t-max-width: 640px;
-}
-
-/* ===== Theme application for export HTML ===== */
-.export-themed {
+  
   font-family: var(--t-font);
   font-size: var(--t-font-size);
   line-height: var(--t-line-height);
   color: var(--t-text);
   background: var(--t-bg);
-  max-width: var(--t-max-width);
-  margin: 0 auto;
   padding: 48px 32px;
 }
-
-.export-themed h1,
-.export-themed h2,
-.export-themed h3 {
-  color: var(--t-heading);
-}
-
-.export-themed h1 { font-size: 2em; margin: 1.2em 0 0.6em; font-weight: 700; }
-.export-themed h2 { font-size: 1.5em; margin: 1.2em 0 0.5em; font-weight: 600; border-bottom: 1px solid var(--t-border); padding-bottom: 0.3em; }
-.export-themed h3 { font-size: 1.25em; margin: 1em 0 0.5em; font-weight: 600; }
-
-.export-themed a { color: var(--t-accent); }
-
-.export-themed code {
-  font-family: var(--t-font-mono);
-  font-size: 0.88em;
-  background: var(--t-code-bg);
-  color: var(--t-code-text);
-  padding: 2px 6px;
-  border-radius: 4px;
-}
-
-.export-themed pre code {
-  display: block;
-  padding: 16px 20px;
-  background: var(--t-pre-bg);
-  color: var(--t-pre-text);
-  border-radius: 8px;
-  overflow-x: auto;
-  font-size: 13px;
-  line-height: 1.6;
-}
-
-.export-themed blockquote {
-  border-left: 3px solid var(--t-blockquote-border);
-  padding: 8px 16px;
-  margin: 1em 0;
-  background: var(--t-blockquote-bg);
-  border-radius: 0 8px 8px 0;
-  color: var(--t-text-sec);
-}
-
-.export-themed table { width: 100%; border-collapse: collapse; margin: 1em 0; }
-.export-themed th { text-align: left; font-weight: 600; padding: 10px 12px; background: var(--t-th-bg); border-bottom: 2px solid var(--t-border); }
-.export-themed td { padding: 8px 12px; border-bottom: 1px solid var(--t-border); }
-
-.export-themed hr { border: none; height: 1px; background: var(--t-border); margin: 2em 0; }
-
-.export-themed img { max-width: 100%; border-radius: 8px; }
+.theme-minimal h1, .theme-minimal h2, .theme-minimal h3 { color: var(--t-heading); font-family: var(--t-font); }
+.theme-minimal h1 { font-size: 2em; margin: 1.2em 0 0.6em; font-weight: 700; }
+.theme-minimal h2 { font-size: 1.5em; margin: 1.2em 0 0.5em; font-weight: 600; border-bottom: 1px solid var(--t-border); padding-bottom: 0.3em; }
+.theme-minimal h3 { font-size: 1.25em; margin: 1em 0 0.5em; font-weight: 600; }
+.theme-minimal a { color: var(--t-accent); }
+.theme-minimal code { font-family: var(--t-font-mono); font-size: 0.88em; background: var(--t-code-bg); color: var(--t-code-text); padding: 2px 6px; border-radius: 4px; }
+.theme-minimal pre { background: var(--t-pre-bg); border-radius: 8px; margin: 1em 0; overflow-x: auto; }
+.theme-minimal pre code { background: transparent; padding: 16px 20px; display: block; color: var(--t-pre-text); }
+.theme-minimal blockquote { border-left: 3px solid var(--t-blockquote-border); padding: 8px 16px; margin: 1em 0; background: var(--t-blockquote-bg); color: var(--t-text-sec); }
+.theme-minimal table { width: 100%; border-collapse: collapse; margin: 1em 0; }
+.theme-minimal th { text-align: left; font-weight: 600; padding: 10px 12px; background: var(--t-th-bg); border-bottom: 2px solid var(--t-border); }
+.theme-minimal td { padding: 8px 12px; border-bottom: 1px solid var(--t-border); }
+.theme-minimal hr { border-top: 1px solid var(--t-border); }
 
 /* ===== Print styles ===== */
 @media print {
   .export-themed {
-    padding: 0;
+    padding: 0 !important;
     max-width: 100%;
   }
 
